@@ -2,7 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // const API_BASE_URL = 'http://localhost:5000/api';
-const API_BASE_URL = 'https://exchange-book-dot-xenon-axe-450704-n3.uc.r.appspot.com/';
+const API_BASE_URL = 'https://exchange-book-dot-xenon-axe-450704-n3.uc.r.appspot.com/api';
 
 // Create axios instance
 const api = axios.create({
