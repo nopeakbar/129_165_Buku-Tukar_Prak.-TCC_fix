@@ -45,7 +45,7 @@ const Login = () => {
       console.log('🔐 Attempting login with:', { email: formData.email });
       
       // REAL API call to your backend
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch('https://buku-tukar-559917148272.us-central1.run.app/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

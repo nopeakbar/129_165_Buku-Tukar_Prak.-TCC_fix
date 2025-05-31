@@ -20,7 +20,7 @@ const Home = () => {
       setLoading(true);
       
       // Real API call to get all books
-      const response = await fetch('http://localhost:5000/api/books', {
+      const response = await fetch('https://buku-tukar-559917148272.us-central1.run.app/api/books', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

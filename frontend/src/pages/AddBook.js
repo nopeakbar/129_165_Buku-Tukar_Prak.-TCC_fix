@@ -36,7 +36,7 @@ const AddBook = () => {
       console.log('🧪 Testing backend connection...');
       toast.info('Testing connection...');
       
-      const response = await fetch('http://localhost:5000/api/books', {
+      const response = await fetch('https://buku-tukar-559917148272.us-central1.run.app/api/books', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
