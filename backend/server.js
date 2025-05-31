@@ -49,7 +49,7 @@ import exchangeHitoryRoutes from './routes/exchangeHitoryRoutes.js'
 import protectedRoutes from './routes/protectedRoutes.js';
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5010;
 
 // Simple CORS configuration - this should work
 app.use(cors({

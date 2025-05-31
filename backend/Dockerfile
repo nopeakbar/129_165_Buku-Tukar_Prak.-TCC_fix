@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . .
 RUN cat .env
 RUN npm install --production
-EXPOSE 5000
-CMD ["node", "index.js"]
+EXPOSE 5010
+CMD ["node", "server.js"]
