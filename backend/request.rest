@@ -1,0 +1,226 @@
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "tesss@tessss.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:5000/api/auth/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzQ4MjA3MzY0LCJleHAiOjE3NDgyMDgyNjR9.YwWwnjIEAn6aGDr6VXIzqRlrU_LpGVxjF1588YFPM8U
+###
+@baseUrl = http://localhost:5000/api
+
+### 
+# — Auth
+
+@token =        # <-- setelah login, paste accessToken di sini
+@adminToken =   # <-- jika mau tes route admin, paste token admin
+
+###
+# 1) Register
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "alice01",
+  "email": "alice01@example.com",
+  "password": "AlicePass123!",
+  "whatsappNumber": "081234567890",
+  "addressUser": "Jl. Merdeka No. 1, Jakarta",
+  "avatar_url": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+}
+
+###
+# 2) Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "tester@example.com",
+  "password": "password123"
+}
+
+###
+# 3) Logout
+POST http://localhost:5000/api/auth/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzQ4MjA3NDQ0LCJleHAiOjE3NDgyMDgzNDR9.eg4HSH6QOlMuVA5tcqYLd8WIHraoOLL1hX_4KJvM3-U
+
+### 
+# — Users (admin)
+
+###
+# 4) Get all users
+GET {{baseUrl}}/users
+Authorization: Bearer {{adminToken}}
+
+###
+# 5) Create user
+POST {{baseUrl}}/users
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "email": "newuser@example.com",
+  "password": "newpass"
+}
+
+###
+# 6) Get user by id
+GET {{baseUrl}}/users/2
+Authorization: Bearer {{adminToken}}
+
+###
+# 7) Update user
+PUT {{baseUrl}}/users/2
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "username": "updateduser",
+  "email": "updated@example.com"
+}
+
+###
+# 8) Delete user
+DELETE {{baseUrl}}/users/2
+Authorization: Bearer {{adminToken}}
+
+###
+# — Profile (current user)
+
+###
+# 9) Get my profile
+GET {{baseUrl}}/users/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNzQ4MjA3NDg0LCJleHAiOjE3NDgyMDgzODR9.diG0qiXPYPxlbzyE6OoGqhh8jro1OmCGuCFuPicGZGU
+
+###
+# 10) Update my profile
+PUT {{baseUrl}}/users/profile
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "username": "tester-updated",
+  "email": "tester2@example.com",
+  "whatsappNumber": "08123456789",
+  "addressUser": "Jalan Contoh 1",
+  "avatar_url": "https://via.placeholder.com/120"
+}
+
+###
+# 11) Change my password
+PUT {{baseUrl}}/users/profile/change-password
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "oldPassword": "password123",
+  "newPassword": "newpassword456"
+}
+
+### 
+# — Books
+
+###
+# 12) Add a book
+POST {{baseUrl}}/books
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Buku 1",
+  "author": "Pengarang A",
+  "genre": "Fiksi",
+  "condition": "Baru",
+  "description": "Deskripsi buku",
+  "imageUrl": "https://via.placeholder.com/200"
+}
+
+###
+# 13) Get all books
+GET {{baseUrl}}/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiaWF0IjoxNzQ4MjA3OTc1LCJleHAiOjE3NDgyMDg4NzV9.RqQdPrzFGFIn90Nc7JW_eRC6myOVg3onM6A7GFWoSHQ
+
+###
+# 14) Get my books
+GET {{baseUrl}}/books/me
+Authorization: Bearer {{token}}
+
+###
+# 15) Update a book
+PUT {{baseUrl}}/books/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Buku 1 (Edisi Baru)"
+}
+
+###
+# 16) Delete a book
+DELETE {{baseUrl}}/books/1
+Authorization: Bearer {{token}}
+
+###
+# — Exchanges
+
+###
+# 17) Request an exchange
+POST {{baseUrl}}/exchanges
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "offeredBookId": 1,
+  "requestedBookId": 2,
+  "messages": "Boleh tukar?",
+  "location": "Jakarta",
+  "meetingDatetime": "2025-06-01T10:00:00.000Z"
+}
+
+###
+# 18) Get received exchanges
+GET {{baseUrl}}/exchanges/received
+Authorization: Bearer {{token}}
+
+###
+# 19) Get my (sent) exchanges
+GET {{baseUrl}}/exchanges/sent
+Authorization: Bearer {{token}}
+
+###
+# 20) Update exchange status
+PUT {{baseUrl}}/exchanges/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "status": "accepted"
+}
+
+###
+# — Exchange History
+
+###
+# 21) Add to history (complete an exchange)
+POST {{baseUrl}}/exchanges/history
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "exchangeRequestId": 1
+}
+
+###
+# 22) Get all exchange history
+GET {{baseUrl}}/exchanges/history
+Authorization: Bearer {{token}}
+
+###
+# 23) Get single history entry
+GET {{baseUrl}}/exchanges/history/1
+Authorization: Bearer {{token}}
