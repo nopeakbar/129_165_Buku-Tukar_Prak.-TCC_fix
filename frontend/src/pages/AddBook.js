@@ -36,7 +36,7 @@ const AddBook = () => {
       console.log('🧪 Testing backend connection...');
       toast.info('Testing connection...');
       
-      const response = await fetch('https://buku-tukar-559917148272.us-central1.run.app/api/books', {
+      const response = await fetch('https://book-exchange-559917148272.us-central1.run.app/api/books', { 
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ const AddBook = () => {
       console.log('🔑 Using token:', token.substring(0, 20) + '...');
 
       // Enhanced API call with better error handling
-      const response = await fetch('https://buku-tukar-559917148272.us-central1.run.app/api/books', {
+      const response = await fetch('https://book-exchange-559917148272.us-central1.run.app/api/books', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
