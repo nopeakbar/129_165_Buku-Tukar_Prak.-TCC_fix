@@ -55,7 +55,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000', 
     'http://localhost:5173', 
-    'https://exchange-book-dot-xenon-axe-450704-n3.uc.r.appspot.com'  // This is your FRONTEND URL
+    'https://exchange-book-dot-xenon-axe-450704-n3.uc.r.appspot.com',
+    'https://frontend-bukutukar-dot-xenon-axe-450704-n3.uc.r.appspot.com'// This is your FRONTEND URL
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
