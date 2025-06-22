@@ -30,8 +30,8 @@ import { Storage } from '@google-cloud/storage';
 // Jika GCLOUD_PROJECT atau GCS_BUCKET_NAME tidak disetel di env GCP,
 // kode akan menggunakan nilai setelah '||' sebagai fallback.
 // Namun, sangat direkomendasikan untuk MENYETELNYA di environment GCP Anda.
-const projectId = process.env.GCLOUD_PROJECT || 'xenon-axe-450704-n3';
-const bucketName = process.env.GCS_BUCKET_NAME || 'simpan_buku_tukar';
+const projectId = process.env.GCLOUD_PROJECT || 'e-13-450704';
+const bucketName = process.env.GCS_BUCKET_NAME || 'simpan-buku-tukar';
 
 // Inisialisasi Storage tanpa keyFilename.
 // Kredensial akan diambil secara otomatis dari environment GCP.
